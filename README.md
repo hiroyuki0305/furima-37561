@@ -5,53 +5,40 @@
 | ------------------------ | ------------- | ------------------------------ |
 | nickname                 | string        | null: false                    |
 | email                    | string        | null: false, unique: true      |
-| password                 | string        | null: false                    |
+| encrypted_password       | string        | null: false                    |
 | last_name                | string        | null: false                    |
 | first_name               | string        | null: false                    |
 | last_name_kana           | string        | null: false                    |
-| first_name-kana          | string        | null: false                    |
+| first_name_kana          | string        | null: false                    |
 | birth_date               | date          | null: false                    |
 
 ## Association
 --has_many :items
---has_many :comments_information
---belongs_to :shipping_information
---belongs_to :delivery_information
---belongs_to :card_information
+--has_many :shipping
+--has_many :purchasers
 =============================================================================
 ## items 商品情報テーブル
-| Column                   | Type          | Options                        |
-| ------------------------ | ------------- | ------------------------------ |
-| item_image               |               | null: false                    |
-| item_name                | string        | null: false                    |
-| item-info                | text          | null: false                    |
-| item-category            | string        | null: false                    |
-| item_sales_status        | string        | null: false                    |
-| item_shipping_fee_status | string        | null: false                    |
-| item_prefecture          | string        | null: false                    |
-| item_scheduled_deliver   | string        | null: false                    | 
-| item_price               | integer       | null: false                    |
-| add-tax-price            | integer       |                                |
-| profit                   | integer       |                                |
-
-## Association
---has_many :comments_information
---belongs_to :users
-=============================================================================
-## comments コメント情報テーブル
-| Column                   | Type          | Options                        |
-| ------------------------ | ------------- | ------------------------------ |
-| comment                  | text          | null: false                    |
+| Column                      | Type          | Options                        |
+| --------------------------- | ------------- | ------------------------------ |
+| item_name                   | string        | null: false                    |
+| item_info                   | text          | null: false                    |
+| item-category_id            | integer       | null: false                    |
+| item_sales_status_id        | integer       | null: false                    |
+| item_shipping_fee_status_id | integer       | null: false                    |
+| item_prefecture_id          | integer       | null: false                    |
+| item_scheduled_deliver_id   | integer       | null: false                    | 
+| item_price                  | integer       | null: false                    |
 
 ## Association
 --belongs_to :users
---belongs_to :items
+--belongs_to :shipping
+--belongs_to :purchasers
 =============================================================================
 ## shipping 発送先情報テーブル
 | Column                   | Type          | Options                        |
 | ------------------------ | ------------- | ------------------------------ |
 | postal_code              | string        | null: false                    |
-| prefecture               | string        | null: false                    |
+| prefecture_id            | integer       | null: false                    |
 | city                     | string        | null: false                    |
 | addresses                | string        | null: false                    |
 | building                 | string        |                                |
@@ -59,28 +46,14 @@
 
 ## Association
 --belongs_to :users
+--belongs_to :items
 =============================================================================
-## delivery 配送先情報テーブル
+## purchaser 購入履歴テーブル
 | Column                   | Type          | Options                        |
 | ------------------------ | ------------- | ------------------------------ |
-| postal_code              | string        | null: false                    |
-| prefecture               | string        | null: false                    |
-| city                     | string        | null: false                    |
-| addresses                | string        | null: false                    |
-| building                 | string        |                                |
-| phone_number             | string        | null: false                    |
+| nickname_id              | references    | null: false, foreign_key: true |
+| prefecture_id            | references    | null: false, foreign_key: true |
 
 ## Association
 --belongs_to :users
-=============================================================================
-## card カード情報テーブル
-| Column                   | Type          | Options                        |
-| ------------------------ | ------------- | ------------------------------ |
-| card_number              | string        | null: false                    |
-| card_exp_month           | string        | null: false                    |
-| card-exp-year            | integer       | null: false                    |
-| card-cvc                 | string        | null: false                    |
-
-## Association
---belongs_to :users
-=============================================================================
+--belongs_to :items
