@@ -13,8 +13,8 @@
 | birth_date               | date          | null: false                    |
 
 ## Association
---has_many :items
 --has_many :shipping
+--has_many :purchasers
 =============================================================================
 ## items 商品情報テーブル
 | Column                      | Type          | Options                        |
@@ -27,7 +27,7 @@
 | prefecture_id               | integer       | null: false                    |
 | scheduled_deliver_id        | integer       | null: false                    | 
 | price                       | integer       | null: false                    |
-| user_id                     | references    | null: false, foreign_key: true |
+| user                        | references    | null: false, foreign_key: true |
 
 ## Association
 --belongs_to :user
@@ -42,17 +42,18 @@
 | addresses                | string        | null: false                    |
 | building                 | string        |                                |
 | phone_number             | string        | null: false                    |
-| purchaser_id             | references    | null: false, foreign_key: true |
+| purchaser                | references    | null: false, foreign_key: true |
 
 ## Association
 --belongs_to :purchaser
 =============================================================================
-## purchaser 購入履歴テーブル
+## purchasers 購入履歴テーブル
 | Column                   | Type          | Options                        |
 | ------------------------ | ------------- | ------------------------------ |
-| user_id                  | references    | null: false, foreign_key: true |
-| item_id                  | references    | null: false, foreign_key: true |
+| user                     | references    | null: false, foreign_key: true |
+| item                     | references    | null: false, foreign_key: true |
 
 ## Association
+--belongs_to :user
 --belongs_to :item
---belongs_to :shipping
+--has_one :shipping
