@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def edit
   end
 
@@ -15,5 +14,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :last_name, :first_name, :first_name_kana, :last_name_kana, :birth_date)
-  end 
+  end
 end
