@@ -1,4 +1,4 @@
-class Shipping_fee_status_id < ActiveHash::Base
+class ShippingFeeStatus < ActiveHash::Base
 
   self.data = [
     { id: 1, name: '--' },

@@ -13,7 +13,7 @@
 | birth_date               | date          | null: false                    |
 
 ## Association
---has_many :shipping
+--has_many :items
 --has_many :purchasers
 =============================================================================
 ## items 商品情報テーブル
