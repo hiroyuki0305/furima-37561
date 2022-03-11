@@ -11,21 +11,20 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    
+
     context '商品情報を入力ができない時' do
-      
       it '商品画像でファイル選択をされていないと登録できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
-      
+
       it '商品名が空では登録できない' do
         @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include "Name can't be blank"
       end
-    
+
       it '商品名が空では登録できない' do
         @item.info = ''
         @item.valid?
@@ -71,9 +70,8 @@ RSpec.describe Item, type: :model do
       it '価格が半角数字以外では登録できない' do
         @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Price is out of setting range"
+        expect(@item.errors.full_messages).to include 'Price Price is out of setting range'
       end
-
     end
   end
 end
