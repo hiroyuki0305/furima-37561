@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 <div class='main'>
 
+
   <div class='title-contents'>
     <h2 class='service-title'>
       人生を変えるフリマアプリ
@@ -57,7 +58,7 @@
       </li>
     </ul>
   </div>
-
+ 
   <div class='ad-contents'>
     <h2 class='ad-title'>
       会員数日本一位
@@ -119,11 +120,10 @@
     </div>
     <ul class='item-lists'>
 
-  
     <% if  @items.present? %>
      <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -149,7 +149,7 @@
         <% end %>
       </li>
      <% end %>  
-      
+
      <% else %> 
       <li class='list'>
         <%= link_to '#' do %>
@@ -169,7 +169,6 @@
         <% end %>
       </li>
      <% end %>
-      
     </ul>
   </div>
 </div>
