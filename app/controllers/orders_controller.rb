@@ -12,9 +12,10 @@ class OrdersController < ApplicationController
     @purchaser_shipping = PurchaserShipping.new(purchaser_params)
     if @purchaser_shipping.valid?
       @purchaser_shipping.save
-      redirect_to action: :index
+      redirect_to root_path
     else
-      render :new
+      @item = Item.find(params[:item_id])
+      render :index
     end
   end
 
