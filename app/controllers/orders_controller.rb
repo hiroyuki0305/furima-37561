@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+  before_action :url, only: [:index, :create, :show]
  
   def index
     @item = Item.find(params[:item_id])
@@ -24,7 +26,7 @@ class OrdersController < ApplicationController
 
   def purchaser_params
     params.require(:purchaser_shipping).permit(:postal_code, :prefecture_id, :city, :addresses, :phone_number, :building).
-    merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token],)
   end
 
   def pay_item
@@ -37,4 +39,15 @@ class OrdersController < ApplicationController
       )
   end
 
+  def url
+    @item = Item.find(params[:item_id])
+    if @item.purchaser.present?
+     if current_user.id == @item.user_id
+      redirect_to root_path
+     else  
+      redirect_to root_path
+     end
+    end
+  end
+    
 end
