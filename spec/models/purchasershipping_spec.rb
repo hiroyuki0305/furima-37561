@@ -79,6 +79,11 @@ RSpec.describe PurchaserShipping, type: :model do
         expect(@purchaser_shipping.errors.full_messages).to include "Phone number is too short"
       end
 
+      it 'トークンが空では登録できない' do
+        @purchaser_shipping.token = nil
+        @purchaser_shipping.valid?
+        expect(@purchaser_shipping.errors.full_messages).to include "Token can't be blank"
+      end
     end
   end
 end
