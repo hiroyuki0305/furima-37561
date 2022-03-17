@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品の状態に「---」が選択されている場合は登録できない' do
-        @item.sales_status_id = '1'
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Sales status can't be blank"
       end
@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '配送料の負担に「---」が選択されている場合は登録できない' do
-        @item.shipping_fee_status_id = '1'
+        @item.shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping fee status can't be blank"
       end
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域に「---」が選択されている場合は登録できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数に「---」が選択されている場合は登録できない' do
-        @item.scheduled_deliver_id = '1'
+        @item.scheduled_deliver_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Scheduled deliver can't be blank"
       end

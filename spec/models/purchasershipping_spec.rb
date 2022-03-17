@@ -18,7 +18,6 @@ RSpec.describe PurchaserShipping, type: :model do
         @purchaser_shipping.building = ''
         expect(@purchaser_shipping).to be_valid
       end
-      
     end
 
     context '購入内容の確認入力ができない時' do
@@ -47,7 +46,7 @@ RSpec.describe PurchaserShipping, type: :model do
       end
 
       it '都道府県に「---」が選択されている場合は登録できない' do
-        @purchaser_shipping.prefecture_id = '1'
+        @purchaser_shipping.prefecture_id = 1
         @purchaser_shipping.valid?
         expect(@purchaser_shipping.errors.full_messages).to include "Prefecture can't be blank"
       end
