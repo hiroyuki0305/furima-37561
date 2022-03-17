@@ -13,6 +13,12 @@ RSpec.describe PurchaserShipping, type: :model do
       it '全ての項目に問題がない' do
         expect(@purchaser_shipping).to be_valid
       end
+
+      it '建物名が空でも登録ができる' do
+        @purchaser_shipping.building = ''
+        expect(@purchaser_shipping).to be_valid
+      end
+      
     end
 
     context '購入内容の確認入力ができない時' do
@@ -56,11 +62,6 @@ RSpec.describe PurchaserShipping, type: :model do
         @purchaser_shipping.addresses = ''
         @purchaser_shipping.valid?
         expect(@purchaser_shipping.errors.full_messages).to include "Addresses can't be blank"
-      end
-
-      it '建物名が空でも登録ができる' do
-        @purchaser_shipping.building = ''
-        expect(@purchaser_shipping).to be_valid
       end
 
       it '電話番号が空では登録できない' do
