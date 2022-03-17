@@ -4,10 +4,8 @@ FactoryBot.define do
     prefecture_id            { 2 }
     city                     { '市区町村' }
     addresses                { '番地' }
+    building                 {}
     phone_number             { '09012345678' }
-    user_id                  { 2 }
-    item_id                  { 2 }
-    token                    {"tok_abcdefghijk00000000000000000"}
-    #association :purchaser  { 2 }
+    token                    { 'tok_abcdefghijk00000000000000000' }
   end
 end

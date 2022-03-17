@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は登録できない' do
-        @item.category_id = '---'
+        @item.category_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end

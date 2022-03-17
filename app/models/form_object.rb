@@ -1,8 +1,7 @@
 class FormObject
   include ActiveModel::Model
-  #attr_accessor
+  # attr_accessor
 
-  #def save
-  #end
-
+  # def save
+  # end
 end
