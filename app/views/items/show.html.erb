@@ -25,21 +25,14 @@
       </span>
     </div>
 
-  <% if user_signed_in? %>
-   <% if current_user.id == @item.user_id %> 
-     <% if @item.purchaser.present? %>
-      
-     <% else %>
+  <% if user_signed_in? || @item.purchaser.present? %>
+  <% else %>
+   <% if current_user.id == @item.user_id  %> 
      <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
      <p class="or-text">or</p>
      <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
-     <% end %>
    <% else %>
-     <% if @item.purchaser.present? %>
-     
-     <% else %>
-      <%= link_to "購入画面に進む", item_orders_path(@item.id)  ,class:"item-red-btn"%>
-     <% end %>
+    <%= link_to "購入画面に進む", item_orders_path(@item.id)  ,class:"item-red-btn"%>
    <% end %>
   <% end %>
 
